@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>HubL Filter Runner</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+   
+  </style>
+</head>
+
+<body>
+  <div class="hubl">
+    <div class="heading">
+      <h2>🧪 HubL Filter Runner</h2>
+    </div>
+
+    <div class="codeArea">
+      <!-- Input area with line numbers -->
+      <div class="editor-wrapper">
+        <div class="line-numbers" id="inputLines"></div>
+        <textarea id="hublInput" oninput="updateLineNumbers()"
+          spellcheck="false">{{ "hello,world"|split(",")|length }}</textarea>
+      </div>
+
+      <!-- Output area with line numbers -->
+      <div class="editor-wrapper">
+        <div class="line-numbers" id="outputLines"></div>
+        <pre id="output" class="output-display">Output will appear here...</pre>
+      </div>
+    </div>
+
+    <button onclick="runHubL()">Run</button>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+    integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+
+  <script>
+    function updateLineNumbers() {
+      const input = document.getElementById("hublInput");
+      const lines = input.value.split("\n").length;
+      const inputLines = document.getElementById("inputLines");
+      inputLines.textContent = Array.from({ length: lines }, (_, i) => i + 1).join('\n');
+    }
+
+    window.onload = updateLineNumbers;
+  </script>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
